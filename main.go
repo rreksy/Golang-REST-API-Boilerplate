@@ -1,6 +1,6 @@
 package main
 
-import "golang-migration/app"
+import "golang-blueprint/app"
 
 func main() {
 	app.Run()

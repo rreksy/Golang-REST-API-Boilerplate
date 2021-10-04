@@ -37,7 +37,8 @@ type DBConfig struct {
 func (server *Server) Initialize(appConfig AppConfig, dbConfig DBConfig) {
 	fmt.Println("Welcome to " + appConfig.AppName)
 
-	server.initializeRoutes()
+	server.initializeDB(dbConfig)
+	server.initializeRoutes(server.DB)
 }
 
 func (server *Server) Run(addr string) {

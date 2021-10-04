@@ -1,6 +1,9 @@
 package app
 
-import "golang-migration/app/models"
+import (
+	addressModel "golang-blueprint/app/address"
+	userModel "golang-blueprint/app/user"
+)
 
 type Model struct {
 	Model interface{}
@@ -8,7 +11,7 @@ type Model struct {
 
 func RegisterModels() []Model {
 	return []Model{
-		{Model: models.User{}},
-		{Model: models.Address{}},
+		{Model: userModel.User{}},
+		{Model: addressModel.Address{}},
 	}
 }
