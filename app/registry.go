@@ -1,17 +1,16 @@
 package app
 
 import (
-	addressModel "golang-blueprint/app/address"
-	userModel "golang-blueprint/app/user"
+	migrations "golang-blueprint/app/migrations"
 )
 
-type Model struct {
-	Model interface{}
+type Migration struct {
+	Migration interface{}
 }
 
-func RegisterModels() []Model {
-	return []Model{
-		{Model: userModel.User{}},
-		{Model: addressModel.Address{}},
+func RegisterMigrations() []Migration {
+	return []Migration{
+		{Migration: migrations.User{}},
+		{Migration: migrations.Address{}},
 	}
 }
