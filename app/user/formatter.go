@@ -1,5 +1,7 @@
 package user
 
+import "golang-blueprint/app/models"
+
 type UserFormatter struct {
 	ID       uint   `json:"id"`
 	Name     string `json:"name"`
@@ -8,7 +10,7 @@ type UserFormatter struct {
 	ImageURL string `json:"image_url"`
 }
 
-func FormatUser(user User) UserFormatter {
+func FormatUser(user models.User) UserFormatter {
 	formatter := UserFormatter{
 		ID:    user.ID,
 		Name:  user.Name,

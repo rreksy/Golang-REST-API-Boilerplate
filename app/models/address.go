@@ -1,13 +1,12 @@
-package address
+package models
 
 import (
-	"golang-blueprint/app/user"
 	"time"
 )
 
 type Address struct {
 	ID         string `gorm:"size:36;not null;uniqueIndex;primary_key"`
-	User       user.User
+	User       User
 	UserID     string `gorm:"size:36;index"`
 	Name       string `gorm:"size:100"`
 	IsPrimary  bool

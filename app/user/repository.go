@@ -1,12 +1,16 @@
 package user
 
-import "gorm.io/gorm"
+import (
+	"golang-blueprint/app/models"
+
+	"gorm.io/gorm"
+)
 
 type Repository interface {
-	Save(user User) (User, error)
-	FindByEmail(email string) (User, error)
-	FindByID(ID int) (User, error)
-	Update(user User) (User, error)
+	Save(user models.User) (models.User, error)
+	FindByEmail(email string) (models.User, error)
+	FindByID(ID int) (models.User, error)
+	Update(user models.User) (models.User, error)
 }
 
 type repository struct {
@@ -17,7 +21,7 @@ func NewRepository(db *gorm.DB) *repository {
 	return &repository{db}
 }
 
-func (r *repository) Save(user User) (User, error) {
+func (r *repository) Save(user models.User) (models.User, error) {
 	err := r.db.Create(&user).Error
 	if err != nil {
 		return user, err
@@ -25,8 +29,8 @@ func (r *repository) Save(user User) (User, error) {
 	return user, nil
 }
 
-func (r *repository) FindByEmail(email string) (User, error) {
-	var user User
+func (r *repository) FindByEmail(email string) (models.User, error) {
+	var user models.User
 
 	err := r.db.Where("email = ?", email).Find(&user).Error
 
@@ -37,8 +41,8 @@ func (r *repository) FindByEmail(email string) (User, error) {
 	return user, nil
 }
 
-func (r *repository) FindByID(ID int) (User, error) {
-	var user User
+func (r *repository) FindByID(ID int) (models.User, error) {
+	var user models.User
 
 	err := r.db.Where("id = ?", ID).Find(&user).Error
 
@@ -49,7 +53,7 @@ func (r *repository) FindByID(ID int) (User, error) {
 	return user, nil
 }
 
-func (r *repository) Update(user User) (User, error) {
+func (r *repository) Update(user models.User) (models.User, error) {
 	err := r.db.Save(&user).Error
 
 	if err != nil {

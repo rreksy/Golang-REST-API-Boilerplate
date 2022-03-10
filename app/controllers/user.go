@@ -2,6 +2,7 @@ package controller
 
 import (
 	"golang-blueprint/app/helper"
+	"golang-blueprint/app/models"
 	"golang-blueprint/app/user"
 	"net/http"
 
@@ -118,7 +119,7 @@ func (ctrl *userController) CheckEmailAvailability(c *gin.Context) {
 }
 
 func (ctrl *userController) FetchUser(c *gin.Context) {
-	currentUser := c.MustGet("currentUser").(user.User)
+	currentUser := c.MustGet("currentUser").(models.User)
 
 	formatter := user.FormatUser(currentUser)
 
